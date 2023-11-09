@@ -5,6 +5,7 @@ import { useContext } from "react"
 import { notFound } from "next/navigation";
 import { posts } from "@/data/posts";
 import Post from "@/components/post";
+import Icon from "@/components/icon";
 
 export default function Account() {
     const {user} = useContext(UserContext);
