@@ -4,8 +4,8 @@ import { posts } from "@/data/posts";
 import { users } from "@/data/users"
 import { notFound } from "next/navigation";
 
-export function UserPageContent({ id }: { id: string }) {
-    const user = users.find(({username}) => username === id);
+export default function User({ params }: { params: { id: string } }) {
+    const user = users.find(({username}) => username === params.id);
 
     if (!user) notFound();
 
@@ -42,11 +42,5 @@ export function UserPageContent({ id }: { id: string }) {
             </ul>
             </div>
         </div>
-    )
-}
-
-export default function User({ params }: { params: { id: string } }) {
-    return (
-        <UserPageContent id={params.id} />
     )
 }
