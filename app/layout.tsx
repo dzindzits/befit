@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import NavBar from '@/components/nav-bar'
+import { UserProvider } from '@/context/user'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +18,30 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+        <head>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+            <style dangerouslySetInnerHTML={{__html: `
+                .material-symbols-rounded {
+                    font-variation-settings:
+                    'FILL' 0,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 24
+                }
+
+                .material-symbols-rounded.filled {
+                    font-variation-settings: 'FILL' 1
+                }
+            `}} />
+        </head>
+      <body className='h-screen max-w-full sm:w-[32rem] md:w-[40rem] lg:w-[62rem] xl:w-[78rem] m-auto flex flex-col-reverse sm:flex-row sm:border-x border-yellow-400'>
+        <NavBar />
+        <UserProvider>
+            <main className="w-full flex-1 overflow-scroll">
+                {children}
+            </main>
+        </UserProvider>
+      </body>
     </html>
   )
 }
