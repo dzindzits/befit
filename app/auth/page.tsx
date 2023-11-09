@@ -25,12 +25,14 @@ export default function Auth() {
         if (!response) return console.debug('Failed login');
     }
     return (
-        <form>
-            <h1>Login</h1>
-            <p>Login with your username and password</p>
-            <input name="username" value={form.username} onChange={onInput()} />
-            <input name="password" value={form.password} onChange={onInput()} />
-            <button onClick={onSubmit()}>Log in</button>
+        <form className="p-4 flex flex-col gap-2">
+            <h1 className="text-2xl font-semibold">Login</h1>
+            <p className="text-md text-white/50">Login with your username and password</p>
+            <div className="flex flex-col gap-1">
+                <input name="username" value={form.username} onChange={onInput()} placeholder="Username" className="p-2 bg-transparent border border-yellow-400 text-white rounded-lg" />
+                <input name="password" value={form.password} onChange={onInput()} placeholder="Password" className="p-2 bg-transparent border border-yellow-400 text-white rounded-lg" />
+            </div>
+            <button onClick={onSubmit()} className="rounded-lg bg-yellow-400/50 hover:bg-yellow-400/75 p-2">Log in</button>
         </form>
     )
 }
